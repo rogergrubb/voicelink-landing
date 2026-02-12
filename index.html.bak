@@ -243,44 +243,6 @@
     }
     .proof-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
     
-
-    /* ===== ORIGIN STORY ===== */
-    .origin {
-      padding: 100px 0;
-      position: relative;
-    }
-    .origin::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(196, 112, 74, 0.04) 50%, var(--bg-primary) 100%);
-      pointer-events: none;
-    }
-    .origin .container { max-width: 740px; position: relative; }
-    .origin-label {
-      color: #C4704A; font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
-    }
-    .origin-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      margin-bottom: 28px; line-height: 1.2;
-    }
-    .origin-text {
-      font-size: 1.05rem; color: var(--text-secondary);
-      line-height: 1.8; margin-bottom: 20px;
-    }
-    .origin-text strong { color: var(--text-primary); font-weight: 600; }
-    .origin-quote {
-      border-left: 3px solid #C4704A;
-      padding-left: 24px;
-      margin: 36px 0;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      font-style: italic;
-      line-height: 1.6;
-      color: var(--text-primary);
-    }
-
     /* ===== COST COMPARISON ===== */
     .compare {
       padding: 100px 0;
@@ -417,8 +379,8 @@
     /* ===== PRICING ===== */
     .pricing { padding: 100px 0; }
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-      max-width: 960px; margin: 48px auto 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 900px; margin: 48px auto 0;
     }
     .price-card {
       background: var(--bg-card);
@@ -448,7 +410,7 @@
     }
     .price-card .price {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem; font-weight: 700;
+      font-size: 2.5rem; font-weight: 700;
       margin-bottom: 4px;
     }
     .price-card.featured .price { color: var(--gold); }
@@ -582,7 +544,7 @@
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .step-arrow { display: none; }
       .compare-cards { grid-template-columns: 1fr; max-width: 400px; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 500px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
       .price-card.featured { transform: none; }
       .nav-links { display: none; }
       .mobile-menu { display: block; }
@@ -592,7 +554,6 @@
       .feature-card.highlight { grid-column: span 1; }
       .steps-grid { grid-template-columns: 1fr; }
       .proof-grid { gap: 24px; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 320px; }
       .notify-form { flex-direction: column; }
       .notify-form button { width: 100%; }
       .hero-actions { flex-direction: column; align-items: center; }
@@ -609,7 +570,6 @@
       VoiceLink
     </a>
     <div class="nav-links">
-      <a href="#story">Our Story</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
       <a href="#how-it-works">How It Works</a>
@@ -639,7 +599,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
           Notify Me at Launch
         </a>
-        <a href="#story" class="btn-secondary">Read Our Story</a>
+        <a href="#features" class="btn-secondary">See How It Works</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -683,30 +643,6 @@
         <div class="proof-label">VoiceLink per year</div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- ORIGIN STORY -->
-<section class="origin reveal" id="story">
-  <div class="container">
-    <p class="origin-label">Why This Exists</p>
-    <h2 class="origin-heading">I built this for my mom.</h2>
-    <p class="origin-text">
-      She&#8217;s 82. Her hearing has been fading for years. Conversations became a cycle of <strong>&#8220;What?&#8221;</strong> and <strong>&#8220;Never mind.&#8221;</strong> &#8212; the kind of slow, quiet loss that doesn&#8217;t show up in headlines but changes everything about a person&#8217;s day.
-    </p>
-    <p class="origin-text">
-      Hearing aids cost <strong>$2,000 to $8,000</strong>. She couldn&#8217;t afford them. Even the ones she tried didn&#8217;t work well &#8212; they made everything louder, including the noise. The TV. The traffic. The parts she didn&#8217;t need.
-    </p>
-    <div class="origin-quote">
-      What if, instead of making everything louder, we could move speech into the frequencies she can still hear?
-    </div>
-    <p class="origin-text">
-      That&#8217;s VoiceLink. It uses <strong>pitch-shifting technology</strong> to take the frequencies of speech that have become hard to hear and shift them into ranges that still work. Combined with <strong>live captions</strong> for anything that slips through. Plus <strong>tinnitus relief</strong> and <strong>smart listening modes</strong> that adapt to your environment.
-    </p>
-    <p class="origin-text">
-      My mom was the first user. Now it&#8217;s yours.
-    </p>
   </div>
 </section>
 
@@ -834,18 +770,6 @@
     </div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="plan-name">Free</div>
-        <div class="price">$0</div>
-        <div class="price-period">forever</div>
-        <ul class="price-features">
-          <li><span class="check">&#10003;</span> 30 min/day pitch shifting</li>
-          <li><span class="check">&#10003;</span> Live captions</li>
-          <li><span class="check">&#10003;</span> Basic listening modes</li>
-          <li><span class="check">&#10003;</span> No credit card needed</li>
-        </ul>
-        <button class="price-btn" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">Get Started</button>
-      </div>
-      <div class="price-card">
         <div class="plan-name">Monthly</div>
         <div class="price">$4.99</div>
         <div class="price-period">per month</div>
@@ -896,17 +820,16 @@
       <div class="section-label">Be First In Line</div>
       <h2 class="section-title">Get notified when VoiceLink launches</h2>
       <p style="color:var(--text-secondary); font-size:0.95rem;">Join the waitlist and be the first to try VoiceLink free. We'll only email you once — when it's ready.</p>
-      <form class="notify-form" id="notifyForm" action="https://formsubmit.co/rogergrubbrealestate@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New VoiceLink Waitlist Signup!">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="">
-        <input type="email" name="email" placeholder="Enter your email" required id="emailInput">
+      <form class="notify-form" onsubmit="handleSubmit(event)" id="waitlistForm">
+        <input type="text" placeholder="Your name" id="nameInput" style="flex:0.7">
+        <input type="email" placeholder="Your email" required id="emailInput">
         <button type="submit" id="submitBtn">Notify Me</button>
       </form>
       <p class="notify-note">No spam. Ever. Unsubscribe anytime.</p>
       <p class="success-message" id="successMsg">🎉 You're on the list! We'll notify you at launch.</p>
       <!-- Hidden iframe for silent Google Form submission -->
-          </div>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    </div>
   </div>
 </section>
 
@@ -915,8 +838,6 @@
   <div class="container">
     <div class="footer-logo">VoiceLink</div>
     <div class="footer-links">
-      <a href="#story">Our Story</a>
-      <a href="#story">Our Story</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
       <a href="#how-it-works">How It Works</a>
@@ -939,40 +860,68 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
   
-  // Form handling - real submission via FormSubmit.co
-  document.getElementById('notifyForm').addEventListener('submit', async (e) => {
+  // Email signup → Google Form → Google Sheet (in your Drive)
+  function handleSubmit(e) {
     e.preventDefault();
-    const form = e.target;
-    const emailInput = form.querySelector('input[type="email"]');
-    const button = form.querySelector('button');
+    const name = document.getElementById('nameInput').value;
+    const email = document.getElementById('emailInput').value;
+    const btn = document.getElementById('submitBtn');
     
-    button.textContent = 'Joining...';
-    button.disabled = true;
-
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          email: emailInput.value,
-          _subject: 'New VoiceLink Waitlist Signup!'
-        })
-      });
-
-      form.style.display = 'none';
+    if (!email) return;
+    
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    
+    // Google Form submission URL
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdbq8i1hmrbbnGOQLFK9hXBJAvokqNnq5-TfjUFCwKBnbiiSA/formResponse';
+    
+    // Build form data
+    const formData = new FormData();
+    formData.append('entry.761048408', name);           // Full Name
+    formData.append('entry.1286243491', email);         // Email Address
+    formData.append('entry.1223731423', 'Website');     // How did you hear about VoiceLink
+    
+    // Submit via fetch (no-cors mode since Google doesn't return CORS headers)
+    fetch(formURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    }).then(() => {
+      // Show success (no-cors means we can't read the response, but it goes through)
+      document.getElementById('waitlistForm').style.display = 'none';
       document.querySelector('.notify-note').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-    } catch (err) {
+    }).catch(() => {
+      // Fallback: submit via hidden iframe
+      const iframe = document.getElementById('hidden_iframe');
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = formURL;
+      form.target = 'hidden_iframe';
+      
+      const fields = {
+        'entry.761048408': name,
+        'entry.1286243491': email,
+        'entry.1223731423': 'Website'
+      };
+      
+      for (const [key, val] of Object.entries(fields)) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = val;
+        form.appendChild(input);
+      }
+      
+      document.body.appendChild(form);
       form.submit();
-    }
-  });
-
-  document.querySelectorAll('input[name="_next"]').forEach(input => {
-    input.value = window.location.href;
-  });
+      document.body.removeChild(form);
+      
+      document.getElementById('waitlistForm').style.display = 'none';
+      document.querySelector('.notify-note').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  }
 </script>
 
 </body>

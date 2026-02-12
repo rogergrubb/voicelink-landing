@@ -820,12 +820,15 @@
       <div class="section-label">Be First In Line</div>
       <h2 class="section-title">Get notified when VoiceLink launches</h2>
       <p style="color:var(--text-secondary); font-size:0.95rem;">Join the waitlist and be the first to try VoiceLink free. We'll only email you once — when it's ready.</p>
-      <form class="notify-form" onsubmit="handleSubmit(event)">
-        <input type="email" placeholder="Enter your email" required id="emailInput">
-        <button type="submit">Notify Me</button>
+      <form class="notify-form" onsubmit="handleSubmit(event)" id="waitlistForm">
+        <input type="text" placeholder="Your name" id="nameInput" style="flex:0.7">
+        <input type="email" placeholder="Your email" required id="emailInput">
+        <button type="submit" id="submitBtn">Notify Me</button>
       </form>
       <p class="notify-note">No spam. Ever. Unsubscribe anytime.</p>
       <p class="success-message" id="successMsg">🎉 You're on the list! We'll notify you at launch.</p>
+      <!-- Hidden iframe for silent Google Form submission -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
   </div>
 </section>
@@ -857,15 +860,67 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
   
-  // Email signup (stores to localStorage as a simple demo — replace with real backend)
+  // Email signup → Google Form → Google Sheet (in your Drive)
   function handleSubmit(e) {
     e.preventDefault();
+    const name = document.getElementById('nameInput').value;
     const email = document.getElementById('emailInput').value;
-    // In production, this would POST to your backend or email service
-    console.log('Email signup:', email);
-    document.querySelector('.notify-form').style.display = 'none';
-    document.querySelector('.notify-note').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+    const btn = document.getElementById('submitBtn');
+    
+    if (!email) return;
+    
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    
+    // Google Form submission URL
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdbq8i1hmrbbnGOQLFK9hXBJAvokqNnq5-TfjUFCwKBnbiiSA/formResponse';
+    
+    // Build form data
+    const formData = new FormData();
+    formData.append('entry.761048408', name);           // Full Name
+    formData.append('entry.1286243491', email);         // Email Address
+    formData.append('entry.1223731423', 'Website');     // How did you hear about VoiceLink
+    
+    // Submit via fetch (no-cors mode since Google doesn't return CORS headers)
+    fetch(formURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    }).then(() => {
+      // Show success (no-cors means we can't read the response, but it goes through)
+      document.getElementById('waitlistForm').style.display = 'none';
+      document.querySelector('.notify-note').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }).catch(() => {
+      // Fallback: submit via hidden iframe
+      const iframe = document.getElementById('hidden_iframe');
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = formURL;
+      form.target = 'hidden_iframe';
+      
+      const fields = {
+        'entry.761048408': name,
+        'entry.1286243491': email,
+        'entry.1223731423': 'Website'
+      };
+      
+      for (const [key, val] of Object.entries(fields)) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = val;
+        form.appendChild(input);
+      }
+      
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      
+      document.getElementById('waitlistForm').style.display = 'none';
+      document.querySelector('.notify-note').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    });
   }
 </script>
 
